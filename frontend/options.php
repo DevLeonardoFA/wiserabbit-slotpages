@@ -62,7 +62,7 @@ function WRSP_LoadMore() {
         'post_type' => 'slot',
         'posts_per_page' => $quantity_slots,
         'post__not_in' => $ids,
-        'order' => $order,
+        'orderby' => $order,
     );
 
     $query = new WP_Query($args);

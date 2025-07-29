@@ -36,6 +36,20 @@ function frontend_style_script() {
 }
 
 
+// use our template
+add_filter('template_include', 'WRSP_Single_Slot');
+function WRSP_Single_Slot($template) {
+    if (is_singular('slot')) {
+        $single_slot_template = plugin_dir_path(__FILE__) . 'single-slot.php';
+
+        if (file_exists($single_slot_template)) {
+            return $single_slot_template;
+        }
+    }
+
+    return $template;
+}
+
 
 
 

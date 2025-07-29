@@ -23,11 +23,12 @@ $stars = get_post_meta(get_the_ID(), 'WRSP_rating', true);
 
     <div class="content">
         <h2><?php echo $title; ?></h2>
-        <div class="stars" style="--stars: <?php echo $stars; ?>">
+        <div class="WRSP_stars" style="--stars: <?php echo $stars; ?>">
             <?php for($i = 1; $i <= 5; $i++) { ?>
                 <i class="fa-solid fa-star <?php echo $i <= $stars ? 'active' : ''; ?>"></i>
             <?php } ?>
         </div>
+        <a href="<?php echo get_the_permalink(); ?>" target="_blank" class="button">More Info</a>
     </div>
 
 </div>

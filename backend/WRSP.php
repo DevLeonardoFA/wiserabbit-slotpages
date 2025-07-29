@@ -33,7 +33,7 @@ class WRSP {
             'slot', 
             [
                 'label' => __('Slots', 'WRSP'),
-                'public' => false,
+                'public' => true,
                 'show_ui' => true,
                 'supports' => ['title', 'editor', 'thumbnail'],
                 'menu_icon' => 'dashicons-analytics',
@@ -49,6 +49,8 @@ class WRSP {
                     'not_found' => __('No Slots found', 'WRSP'),
                     'not_found_in_trash' => __('No Slots found in Trash', 'WRSP'),
                 ],
+                'taxonomies' => ['provider'],
+                
             ],
         );
 
@@ -79,6 +81,7 @@ class WRSP {
                 'show_admin_column' => true,
                 'show_in_rest' => true,
                 'query_var' => true,
+                'hierarchical' => true,
             ],
         );
 
@@ -116,10 +119,10 @@ class WRSP {
                 </select>
             </div>
 
-            <div class="d-block">    
-                <label for="WRSP_provider" class="provider_name"><?= __('Provider Name', 'WRSP') ?></label>
-                <input type="text" name="WRSP_provider" id="WRSP_provider" value="<?php echo get_post_meta($post->ID, 'WRSP_provider', true); ?>">
-            </div>
+            <!-- <div class="d-block">    
+                <label for="WRSP_provider" class="provider_name"><?php // __('Provider Name', 'WRSP') ?></label>
+                <input type="text" name="WRSP_provider" id="WRSP_provider" value="<?php // echo get_post_meta($post->ID, 'WRSP_provider', true); ?>">
+            </div> -->
 
             <div class="d-block">    
                 <label for="WRSP_RTP" class="RTP"><?= __('Return to Player Percentage ( % )', 'WRSP') ?></label>
@@ -128,8 +131,10 @@ class WRSP {
 
             <div class="d-block">    
                 <label for="WRSP_MinMaxWager" class="MinMaxWager"><?= __('Minimum/Maximum Wager', 'WRSP') ?></label>
-                <input type="number" name="WRSP_MinimumWager" id="WRSP_MinMaxWager" class="WRSP_MinimumWager" value="<?php echo get_post_meta($post->ID, 'WRSP_MinimumWager', true); ?>" placeholder="Minimum Wager">
-                <input type="number" name="WRSP_MaximumWager" id="WRSP_MinMaxWager" class="WRSP_MaximumWager" value="<?php echo get_post_meta($post->ID, 'WRSP_MaximumWager', true); ?>" placeholder="Minimum Wager">
+                <div class="minmax">
+                    <input type="number" name="WRSP_MinimumWager" id="WRSP_MinMaxWager" class="WRSP_MinimumWager" value="<?php echo get_post_meta($post->ID, 'WRSP_MinimumWager', true); ?>" placeholder="Minimum Wager">
+                    <input type="number" name="WRSP_MaximumWager" id="WRSP_MinMaxWager" class="WRSP_MaximumWager" value="<?php echo get_post_meta($post->ID, 'WRSP_MaximumWager', true); ?>" placeholder="Minimum Wager">
+                </div>
             </div>
     
         </div>
@@ -143,9 +148,9 @@ class WRSP {
         if (isset($_POST['WRSP_rating'])) {
             update_post_meta($post_id, 'WRSP_rating', $_POST['WRSP_rating']);
         }
-        if (isset($_POST['WRSP_provider'])) {
-            update_post_meta($post_id, 'WRSP_provider', $_POST['WRSP_provider']);
-        }
+        // if (isset($_POST['WRSP_provider'])) {
+        //     update_post_meta($post_id, 'WRSP_provider', $_POST['WRSP_provider']);
+        // }
         if (isset($_POST['WRSP_RTP'])) {
             update_post_meta($post_id, 'WRSP_RTP', $_POST['WRSP_RTP']);
         }

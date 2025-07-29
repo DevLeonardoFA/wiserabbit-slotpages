@@ -37,8 +37,7 @@ jQuery( ($) => {
         .success((response) => {
 
             if(response == "No more posts"){
-                $("#WRSP_slots").append(response);
-                $("#WRSP_loadmore").remove();
+                $("#WRSP_loadmore").html(response);
                 return;
             }
             

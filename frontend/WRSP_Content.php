@@ -23,9 +23,9 @@ add_shortcode('WRSP', function() {
         </select>
 
         <select name="order" id="WRSP_order">
-            <option value="ASC">ASC</option>
-            <option value="DESC">DESC</option>
-            <option value="RAND">RAND</option>
+            <option value="desc">Descending</option>
+            <option value="asc">Ascending </option>
+            <option value="rand">Random</option>
         </select>
 
         <div id="WRSP_slots">
