@@ -1,0 +1,27 @@
+/* 
+
+    comand: sass --watch assets/style/backend.scss:assets/style/backend.css --style compressed
+
+*/ 
+
+.WRSP_Metabox{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    box-sizing: border-box;
+    div.d-block{
+        display: block;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        label{
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select{
+            width: 100%;
+        }
+        .WRSP_MinimumWager{
+            margin-bottom: 5px;
+        }
+    }
+}

@@ -13,13 +13,13 @@ class WRSP {
         // 1. CPT for Bundles
         add_action('init', [$this, 'WRSP_CPT']);
 
-        // 2. Shortcode
-        add_action('init', [$this, 'WRSP_shortcode']);
+        // 2. Taxonomies for Providers
+        add_action('init', [$this, 'WRSP_taxonomies']);
 
-        // 3. Metabox
+        // 4. Metabox
         add_action('add_meta_boxes', [$this, 'WRSP_metabox']);
 
-        // 4. Save Metabox
+        // 5. Save Metabox
         add_action('save_post_slot', [$this, 'WRSP_metabox_save']);
 
     }
@@ -53,6 +53,38 @@ class WRSP {
         );
 
     }
+    // WRSP CPT Providers
+    public function WRSP_taxonomies() {
+        
+        register_taxonomy(
+            'provider', 
+            'slot', 
+            [
+                'labels' => [
+                    'name' => __('Providers', 'WRSP'),
+                    'singular_name' => __('Provider', 'WRSP'),
+                    'search_items' => __('Search Providers', 'WRSP'),
+                    'popular_items' => __('Popular Providers', 'WRSP'),
+                    'all_items' => __('All Providers', 'WRSP'),
+                    'edit_item' => __('Edit Provider', 'WRSP'),
+                    'update_item' => __('Update Provider', 'WRSP'),
+                    'add_new_item' => __('Add New Provider', 'WRSP'),
+                    'new_item_name' => __('New Provider Name', 'WRSP'),
+                    'separate_items_with_commas' => __('Separate providers with commas', 'WRSP'),
+                    'add_or_remove_items' => __('Add or remove providers', 'WRSP'),
+                    'choose_from_most_used' => __('Choose from the most used providers', 'WRSP'),
+                ],
+                'public' => false,
+                'show_ui' => true,
+                'show_admin_column' => true,
+                'show_in_rest' => true,
+                'query_var' => true,
+            ],
+        );
+
+    }
+
+
 
 
 
@@ -61,7 +93,7 @@ class WRSP {
         
         add_meta_box(
             'WRSP_metabox', 
-            'Slot Information', 
+            __('Slot Information', 'WRSP'),
             [$this, 'WRSP_metabox_content'], 
             'slot', 
             'side',
@@ -75,25 +107,30 @@ class WRSP {
 
         <div class="WRSP_Metabox">
 
-            <label for="WRSP_rating" class="stat_rating">Stat Rating</label>
-            <select name="WRSP_rating" id="WRSP_rating">
-                <?php for($i = 1; $i <= 5; $i++) { ?>
-                    <option value="<?php echo $i; ?>" <?php selected(get_post_meta($post->ID, 'WRSP_rating', true), $i); ?> ><?php echo $i; ?></option>
-                <?php } ?>
-            </select>
+            <div class="d-block">
+                <label for="WRSP_rating" class="star_rating"><?= __('Star Rating', 'WRSP') ?></label>
+                <select name="WRSP_rating" id="WRSP_rating">
+                    <?php for($i = 1; $i <= 5; $i++) { ?>
+                        <option value="<?php echo $i; ?>" <?php selected(get_post_meta($post->ID, 'WRSP_rating', true), $i); ?> ><?php echo $i; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
 
+            <div class="d-block">    
+                <label for="WRSP_provider" class="provider_name"><?= __('Provider Name', 'WRSP') ?></label>
+                <input type="text" name="WRSP_provider" id="WRSP_provider" value="<?php echo get_post_meta($post->ID, 'WRSP_provider', true); ?>">
+            </div>
 
-            <label for="WRSP_provider" class="provider_name">Provider Name</label>
-            <input type="text" name="WRSP_provider" id="WRSP_provider" value="<?php echo get_post_meta($post->ID, 'WRSP_provider', true); ?>">
+            <div class="d-block">    
+                <label for="WRSP_RTP" class="RTP"><?= __('Return to Player Percentage ( % )', 'WRSP') ?></label>
+                <input type="number" name="WRSP_RTP" id="WRSP_RTP" min="0" max="100" value="<?php echo get_post_meta($post->ID, 'WRSP_RTP', true); ?>">
+            </div>
 
-
-            <label for="WRSP_RTP" class="RTP">Return to Player Percentage</label>
-            <input type="number" name="WRSP_RTP" id="WRSP_RTP" min="0" max="100" value="<?php echo get_post_meta($post->ID, 'WRSP_RTP', true); ?>">
-
-            
-            <label for="WRSP_MinMaxWager" class="MinMaxWager">Minimum/Maximum Wager</label>
-            <input type="number" name="WRSP_MinimumWager" id="WRSP_MinMaxWager" value="<?php echo get_post_meta($post->ID, 'WRSP_MinimumWager', true); ?>">
-            <input type="number" name="WRSP_MaximumWager" id="WRSP_MinMaxWager" value="<?php echo get_post_meta($post->ID, 'WRSP_MaximumWager', true); ?>">
+            <div class="d-block">    
+                <label for="WRSP_MinMaxWager" class="MinMaxWager"><?= __('Minimum/Maximum Wager', 'WRSP') ?></label>
+                <input type="number" name="WRSP_MinimumWager" id="WRSP_MinMaxWager" class="WRSP_MinimumWager" value="<?php echo get_post_meta($post->ID, 'WRSP_MinimumWager', true); ?>" placeholder="Minimum Wager">
+                <input type="number" name="WRSP_MaximumWager" id="WRSP_MinMaxWager" class="WRSP_MaximumWager" value="<?php echo get_post_meta($post->ID, 'WRSP_MaximumWager', true); ?>" placeholder="Minimum Wager">
+            </div>
     
         </div>
 
@@ -123,22 +160,6 @@ class WRSP {
 
 
 
-
-
-
-    // WRSP Shortcode
-    public function WRSP_shortcode() {
-
-        add_shortcode('WRSP', [$this, 'WRSP_Frontend']);
-
-    }
-    // WRSP Frontend
-    public function WRSP_Frontend() {
-
-        require_once dirname(__DIR__, 1) . '/frontend/WRSP_Content.php';
-        do_action('WRSP_shortcode_content');
-
-    }
 
 
 

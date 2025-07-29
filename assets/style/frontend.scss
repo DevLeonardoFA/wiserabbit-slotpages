@@ -1,0 +1,51 @@
+/*
+
+    comand: sass --watch assets/style/frontend.scss:assets/style/frontend.css --style compressed
+
+*/
+
+.WRSP_grid{
+    #WRSP_slots{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+
+        .image{
+            aspect-ratio: 1 /  1;
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (width >= 768px) {
+
+    .WRSP_grid{
+        #WRSP_slots{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+}
+
+@media (width >= 991px) {
+
+    .WRSP_grid{
+        #WRSP_slots{
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    
+}
+
+@media (width >= 1024px) {
+
+    .WRSP_grid{
+        #WRSP_slots{
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+    
+}
