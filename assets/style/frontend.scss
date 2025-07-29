@@ -10,11 +10,25 @@
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 10px;
 
-        .image{
-            aspect-ratio: 1 /  1;
-            img{
-                height: 100%;
-                width: 100%;
+        .SlotCard{
+            .image{
+                aspect-ratio: 1 /  1;
+                img{
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            .content{
+                .stars{
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    .fa-star{
+                        font-size: 15px;
+                    }
+                    .fa-star.active{
+                        color: #FFD700;
+                    }
+                }
             }
         }
     }
