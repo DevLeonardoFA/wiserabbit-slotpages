@@ -22,6 +22,9 @@ class WRSP {
         // 5. Save Metabox
         add_action('save_post_slot', [$this, 'WRSP_metabox_save']);
 
+        // 6. Add New Sub Menu
+        add_action('admin_menu', [$this, 'WRSP_add_settings_page']);
+
     }
 
 
@@ -160,6 +163,32 @@ class WRSP {
         if (isset($_POST['WRSP_MaximumWager'])) {
             update_post_meta($post_id, 'WRSP_MaximumWager', $_POST['WRSP_MaximumWager']);
         }
+
+    }
+
+
+
+    
+
+    // Add a new sub menu for settings
+    public function WRSP_add_settings_page() {
+
+        add_submenu_page(
+            'edit.php?post_type=slot',
+            __('Slot Settings', 'WRSP'),
+            __('Slot Settings', 'WRSP'),
+            'manage_options',
+            'WRSP_settings',
+            [$this, 'WRSP_settings_page']
+        );
+        
+
+    }
+
+    // Render settings page
+    public function WRSP_settings_page() {
+
+        require dirname(__DIR__, 1) . '/assets/template/settings.php';
 
     }
 

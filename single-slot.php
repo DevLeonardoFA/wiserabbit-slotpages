@@ -27,7 +27,7 @@ if (file_exists(get_template_directory() . '/header.php')) {
 
         <article <?php post_class(); ?> id="post-single-slot">
 
-			<img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="dasda">
+			<img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="Slot Image">
 
             
             <h1><?php the_title(); ?></h1>
@@ -46,11 +46,11 @@ if (file_exists(get_template_directory() . '/header.php')) {
 			?>
 
 			<div class="ReturnToPlayerPercentage">
-				<span>Return to Player Percentage ( % ): <?php echo get_post_meta(get_the_ID(), 'WRSP_RTP', true) . '%'; ?></span>
+				<span> <?php echo __('Return to Player Percentage', 'WRSP') . ':' . get_post_meta(get_the_ID(), 'WRSP_RTP', true) . '%'; ?></span>
 			</div>
 
 			<div class="MinimumMaximumWager">
-				<span>Minimum/Maximum Wager: <?php echo get_post_meta(get_the_ID(), 'WRSP_MinimumWager', true) . ' / ' . get_post_meta(get_the_ID(), 'WRSP_MaximumWager', true); ?></span>
+				<span> <?php echo __('Minimum/Maximum Wager', 'WRSP') . ':' . get_post_meta(get_the_ID(), 'WRSP_MinimumWager', true) . ' / ' . get_post_meta(get_the_ID(), 'WRSP_MaximumWager', true); ?></span>
 			</div>
 
             <div class="entry-content">

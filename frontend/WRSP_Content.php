@@ -45,7 +45,7 @@ add_shortcode('WRSP', function() {
         </div>
 
         <div class="loadmore">
-            <button id="WRSP_loadmore">Load More</button>
+            <button id="WRSP_loadmore" class="button">Load More</button>
         </div>
 
     </div>

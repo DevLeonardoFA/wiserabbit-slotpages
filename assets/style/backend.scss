@@ -7,15 +7,15 @@
 .WRSP_Metabox{
     display: grid;
     grid-template-columns: 1fr 1fr 3fr;
-    grid-gap: 5px;
+    grid-gap: .3125rem;
     box-sizing: border-box;
     div.d-block{
         display: block;
         box-sizing: border-box;
-        margin-bottom: 10px;
+        margin-bottom: .625rem;
         label{
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: .3125rem;
         }
         input, select{
             width: 100%;
@@ -23,10 +23,50 @@
         .minmax{
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-gap: 5px;
+            grid-gap: .3125rem;
             .WRSP_MinimumWager{
-                margin-bottom: 0px;
+                margin-bottom: 0rem;
             }
         }
     }
+}
+
+
+
+.WRSP_EffectAccondion{
+
+    .tab{
+        display: block;
+        width: max-content;
+        background: #000;
+        border: .0625rem solid #000;
+        color: #fff;
+        padding: .3125rem .625rem;
+        border-radius: .3125rem .3125rem 0 0;
+        margin-right: .3125rem;
+        cursor: pointer;
+
+        &.active{
+            background: #fff;
+            color: #000;
+        }
+    }
+
+    .panel{
+        background-color: #d9d9d9;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+    }
+
+    #WRSP_save_settings{
+        background: #000;
+        color: #fff;
+        border: .0625rem solid #000;
+        border-radius: .3125rem;
+        padding: .3125rem .625rem;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
 }
