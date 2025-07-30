@@ -4,6 +4,7 @@
     $wrsp_settings = get_option('wrsp_plugin_settings', []);
 
     // Default values
+    $font_family_url = isset($wrsp_settings['font_family_url']) ? esc_url($wrsp_settings['font_family_url']) : '';
     $font_family = isset($wrsp_settings['font_family']) ? esc_attr($wrsp_settings['font_family']) : '';
     $text_color = isset($wrsp_settings['text_color']) ? esc_attr($wrsp_settings['text_color']) : '#000000';
     $button_bg_color = isset($wrsp_settings['button_bg_color']) ? esc_attr($wrsp_settings['button_bg_color']) : '#007bff';
@@ -13,6 +14,11 @@
     // Custom CSS and JS
     $custom_css = isset($wrsp_settings['custom_css']) ? esc_textarea($wrsp_settings['custom_css']) : '';
     $custom_js = isset($wrsp_settings['custom_js']) ? esc_textarea($wrsp_settings['custom_js']) : '';
+
+    if($wrsp_settings['font_family_url'] != '') {
+        // remove ' or " from string
+        $font_family_url = $wrsp_settings['font_family_url'] = str_replace(['"', "'"], '', $wrsp_settings['font_family_url']);
+    }
 
 ?>
 
@@ -28,13 +34,17 @@
             <form id="wrsp_settings_form">
                 <h3><?= esc_html__('Font Settings', 'WRSP') ?></h3>
                 <table class="form-table">
+
+
                     <tr>
-                        <th scope="row"><label for="wrsp_font_family"><?= esc_html__('Font Family Link (google fonts)', 'WRSP') ?></label></th>
+                        <th scope="row"><label for="wrsp_font_family_url"><?= esc_html__('Font Family Link (google fonts)', 'WRSP') ?></label></th>
                         <td>
-                            <input type="text" name="wrsp_font_family" id="wrsp_font_family" value="<?= $font_family ?>" class="regular-text" placeholder="e.g. 'https://fonts.googleapis.com/css?family=Open+Sans:400,700'">
+                            <input type="text" name="wrsp_font_family_url" id="wrsp_font_family_url" value="<?= $font_family_url ?>" class="regular-text" placeholder="e.g. 'https://fonts.googleapis.com/css?family=Open+Sans:400,700'">
                             <p class="description"><?= esc_html__('Enter the font family link (e.g., "https://fonts.googleapis.com/css?family=Open+Sans:400,700").', 'WRSP') ?></p>
                         </td>
                     </tr>
+
+
                     <tr>
                         <th scope="row"><label for="wrsp_font_family"><?= esc_html__('Font Family', 'WRSP') ?></label></th>
                         <td>
@@ -42,6 +52,8 @@
                             <p class="description"><?= esc_html__('Enter the desired font family (e.g., Arial, "Times New Roman", etc.).', 'WRSP') ?></p>
                         </td>
                     </tr>
+
+
                     <tr>
                         <th scope="row"><label for="wrsp_text_color"><?= esc_html__('Text Color', 'WRSP') ?></label></th>
                         <td>

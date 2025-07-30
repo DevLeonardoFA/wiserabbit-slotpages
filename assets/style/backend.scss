@@ -4,6 +4,7 @@
 
 */ 
 
+
 .WRSP_Metabox{
     display: grid;
     grid-template-columns: 1fr 1fr 3fr;
@@ -30,7 +31,6 @@
         }
     }
 }
-
 
 
 .WRSP_EffectAccondion{
@@ -69,4 +69,42 @@
         margin-top: 20px;
     }
 
+}
+
+
+.WRSP_grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    max-width: 1000px;
+    
+    .block{
+        position: relative;
+        background: #ffffff;
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 10px;
+        color: #000;
+        text-decoration: none;
+        padding-bottom: 25px;
+
+        b{
+            font-size: 14px;
+            color: #e9811f;
+        }
+
+        h2{
+            margin-top: 5px;
+        }
+
+        &::after{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 25px;
+            background-color: #6c61d3;
+        }
+    }
 }

@@ -4,6 +4,7 @@
 
 */
 
+// wordpress style block
 .is-content-justification-space-between {
     justify-content: space-between;
 }
@@ -14,7 +15,7 @@
 
 
 
-
+// main page
 .WRSP_grid{
     #WRSP_slots{
         display: grid;
@@ -22,26 +23,44 @@
         grid-gap: 10px;
 
         .SlotCard{
+            border: 1px solid #000;
+            border-radius: 7px;
+            overflow: hidden;
+            
             .image{
                 aspect-ratio: 1 /  1;
                 box-sizing: border-box;
                 display: flex;
+                background-color: gray;
                 img{
                     height: 100%;
                     width: 100%;
                 }
             }
-            a.button {
-                width: 100%;
-                display: block;
-                background: black;
-                border: 1px solid #000;
-                border-radius: 5px;
-                text-align: center;
-                color: #fff;
-                text-decoration: none;
-                font-size: 15px;
-                margin: 10px 0 0;
+            .content{
+                box-sizing: border-box;
+                padding: 5px;
+                h2{
+                    margin: 5px 0 5px 0;
+                    font-size: 18px;
+                }
+                a.button {
+                    width: 100%;
+                    display: block;
+                    background: black;
+                    border: 1px solid #000;
+                    border-radius: 5px;
+                    text-align: center;
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 15px;
+                    margin: 10px 0 0;
+                    transition: all .3s ease;
+                    &:hover {
+                        background: #fff;
+                        color: #000;
+                    }
+                }
             }
         }
     }
@@ -67,6 +86,8 @@
     }
 }
 
+
+// stars
 .WRSP_stars{
     max-width: 100px;
     display: grid;
@@ -79,6 +100,8 @@
     }
 }
 
+
+// single page
 #post-single-slot{
     display: grid;
     grid-template-columns: 1fr;

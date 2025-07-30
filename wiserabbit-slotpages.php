@@ -27,9 +27,7 @@ add_action('admin_enqueue_scripts', 'WRSP_add_Color_Picker');
 add_action('wp_ajax_wrsp_save_plugin_settings', 'WRSP_Save_Settings');
 // make settings work
 add_action('admin_enqueue_scripts', 'WRSP_Enqueue_Scripts');
-add_action('wp_enqueue_scripts', function () {
-    wp_add_inline_script( 'wrsp-settings-script', 'console.log("This is an inline script!");', 'after' );
-});
+add_action('wp_head', 'WRSP_Apply_Custom_Styles_and_Scripts');
 
 add_action('wp_head', 'WRSP_Print_CSS_Directly'); 
 add_action('wp_footer', 'WRSP_Print_JS_Directly'); 
@@ -74,12 +72,17 @@ function WRSP_add_Color_Picker($hook_suffix) {
     wp_enqueue_style('wp-color-picker');
     wp_enqueue_script('wp-color-picker');
 }
+
+// save filled settings
 function WRSP_Save_Settings() {
 
     check_ajax_referer('wrsp_save_settings_nonce', '_wpnonce'); 
 
     $settings_data = [];
 
+    if (isset($_POST['font_family_url'])) {
+        $settings_data['font_family_url'] = sanitize_text_field(wp_unslash($_POST['font_family_url']));
+    }
     if (isset($_POST['font_family'])) {
         $settings_data['font_family'] = sanitize_text_field(wp_unslash($_POST['font_family']));
     }
@@ -108,14 +111,29 @@ function WRSP_Save_Settings() {
 
     wp_send_json_success('Settings saved!');
 }
+
+// apply custom styles
 function WRSP_Apply_Custom_Styles_and_Scripts() {
 
 
     $wrsp_settings = get_option('wrsp_plugin_settings', []);
     
     $custom_css = '';
+
+    if (!empty($wrsp_settings['font_family_url'])) {
+
+        // remove ' or " from string
+        $wrsp_settings['font_family_url'] = str_replace(['"', "'"], '', $wrsp_settings['font_family_url']);
+
+        $custom_css .= '@import url("' . esc_url($wrsp_settings['font_family_url']) . '");';
+    }
     if (!empty($wrsp_settings['font_family'])) {
-        $custom_css .= ' .WRSP_grid * { font-family: ' . esc_attr($wrsp_settings['font_family']) . ' !important; }';
+
+        // remove ' or " from string
+        $wrsp_settings['font_family'] = str_replace(['"', "'"], '', $wrsp_settings['font_family']);
+
+        $custom_css .= '.WRSP_grid span, .WRSP_grid p, .WRSP_grid h1, .WRSP_grid h2, .WRSP_grid h3, .WRSP_grid h4, .WRSP_grid h5, .WRSP_grid h6,
+        #post-single-slot span ,#post-single-slot p, #post-single-slot h1, #post-single-slot h2, #post-single-slot h3, #post-single-slot h4, #post-single-slot h5, #post-single-slot h6 { font-family: ' . esc_attr($wrsp_settings['font_family']) . ' !important; }';
     }
     if (!empty($wrsp_settings['text_color'])) {
         $custom_css .= '.WRSP_grid span, .WRSP_grid p, .WRSP_grid h1, .WRSP_grid h2, .WRSP_grid h3, .WRSP_grid h4, .WRSP_grid h5, .WRSP_grid h6,
@@ -130,15 +148,12 @@ function WRSP_Apply_Custom_Styles_and_Scripts() {
     if (!empty($wrsp_settings['button_text_color'])) {
         $custom_css .= ' .WRSP_grid .button, .WRSP_grid .button { color: ' . esc_attr($wrsp_settings['button_text_color']) . ' !important; }';
     }
-    if (!empty($wrsp_settings['custom_css'])) {
-        $custom_css .= wp_kses_post($wrsp_settings['custom_css']);
-    }
 
-    wp_add_inline_script( 'wrsp-settings-script', 'console.log("This is an inline script!");', 'after' );
+    // wp_add_inline_style( 'wrsp-settings-style', $custom_css);
+    echo '<style>' . $custom_css . '</style>';
 
 
 }
-
 function WRSP_Print_CSS_Directly() {
     
     $wrsp_settings = get_option('wrsp_plugin_settings', []);
@@ -149,7 +164,7 @@ function WRSP_Print_CSS_Directly() {
 
 }
 
-
+// apply custom js
 function WRSP_Print_JS_Directly(){
 
     $wrsp_settings = get_option('wrsp_plugin_settings', []);
@@ -160,7 +175,7 @@ function WRSP_Print_JS_Directly(){
 
 }
 
-
+// Ajax & Enqueue
 function WRSP_Enqueue_Scripts() {
 
     $args = array(
@@ -183,7 +198,7 @@ function WRSP_Enqueue_Scripts() {
 
 
 
-// Use it if you want to create 10 slots for testing
+// Use it if you want to create slots for testing
 // require_once __DIR__ . '/OnlyForTest.php';
 
 

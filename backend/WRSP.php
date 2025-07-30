@@ -24,6 +24,8 @@ class WRSP {
 
         // 6. Add New Sub Menu
         add_action('admin_menu', [$this, 'WRSP_add_settings_page']);
+        add_action('admin_menu', [$this, 'WRSP_add_introductions']);
+
 
     }
 
@@ -166,8 +168,6 @@ class WRSP {
 
     }
 
-
-
     
 
     // Add a new sub menu for settings
@@ -184,7 +184,6 @@ class WRSP {
         
 
     }
-
     // Render settings page
     public function WRSP_settings_page() {
 
@@ -192,7 +191,27 @@ class WRSP {
 
     }
 
+
+
+    // Add a new sub menu for Introductions
+    public function WRSP_add_introductions() {
+        add_submenu_page(
+            'edit.php?post_type=slot',
+            __('Introductions', 'WRSP'),
+            __('Introductions', 'WRSP'),
+            'manage_options',
+            'WRSP_introductions',
+            [$this, 'WRSP_introductions_page']
+        );
+    }
+    // Render introductions page
+    public function WRSP_introductions_page() {
+
+        require dirname(__DIR__, 1) . '/assets/template/introductions.php';
+
+    }
     
+
 
 
 }

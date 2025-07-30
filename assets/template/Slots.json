@@ -1,0 +1,152 @@
+[
+    {
+        "title": "Slot 0",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 1,
+        "provider": "Provider 0",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 1",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 2,
+        "provider": "Provider 1",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 2",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 3,
+        "provider": "Provider 2",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 3",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 4,
+        "provider": "Provider 3",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 4",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 5,
+        "provider": "Provider 4",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 5",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 6,
+        "provider": "Provider 5",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 6",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 7,
+        "provider": "Provider 6",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 7",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 8,
+        "provider": "Provider 7",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 8",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 9,
+        "provider": "Provider 8",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 9",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 10,
+        "provider": "Provider 9",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 10",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 1,
+        "provider": "Provider 10",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 11",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 2,
+        "provider": "Provider 11",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 12",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 3,
+        "provider": "Provider 12",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 13",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 4,
+        "provider": "Provider 13",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    },
+    {
+        "title": "Slot 14",
+        "content": "lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet",
+        "status": "publish",
+        "rating": 5,
+        "provider": "Provider 14",
+        "RTP": 0,
+        "MinimumWager": 0,
+        "MaximumWager": 0
+    }
+]
