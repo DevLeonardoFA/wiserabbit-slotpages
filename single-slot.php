@@ -45,13 +45,19 @@ if (file_exists(get_template_directory() . '/header.php')) {
 				}
 			?>
 
-			<div class="ReturnToPlayerPercentage">
-				<span> <?php echo __('Return to Player Percentage', 'WRSP') . ':' . get_post_meta(get_the_ID(), 'WRSP_RTP', true) . '%'; ?></span>
-			</div>
+			<?php if( get_post_meta(get_the_ID(), 'WRSP_RTP', true) ){ ?>
 
-			<div class="MinimumMaximumWager">
-				<span> <?php echo __('Minimum/Maximum Wager', 'WRSP') . ':' . get_post_meta(get_the_ID(), 'WRSP_MinimumWager', true) . ' / ' . get_post_meta(get_the_ID(), 'WRSP_MaximumWager', true); ?></span>
-			</div>
+				<div class="ReturnToPlayerPercentage">
+					<span> <?php echo __('Return to Player Percentage', 'WRSP') . ':' . get_post_meta(get_the_ID(), 'WRSP_RTP', true) . '%'; ?></span>
+				</div>
+
+			<?php } ?>
+
+			<?php if( get_post_meta(get_the_ID(), 'WRSP_MinimumWager', true) && get_post_meta(get_the_ID(), 'WRSP_MaximumWager', true) ){ ?>
+				<div class="MinimumMaximumWager">
+					<span> <?php echo __('Minimum/Maximum Wager', 'WRSP') . ':' . get_post_meta(get_the_ID(), 'WRSP_MinimumWager', true) . ' / ' . get_post_meta(get_the_ID(), 'WRSP_MaximumWager', true); ?></span>
+				</div>
+			<?php } ?>
 
             <div class="entry-content">
                 <?php the_content(); ?>
